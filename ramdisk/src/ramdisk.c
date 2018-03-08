@@ -361,6 +361,9 @@ Return Value:
     WDFQUEUE                queue;
     DECLARE_CONST_UNICODE_STRING(ntDeviceName, NT_DEVICE_NAME);
 
+    // Give total access to any user
+    DECLARE_CONST_UNICODE_STRING(sddlString, L"D:P(A;;GA;;;SY)(A;;GA;;;BA)(A;;GA;;;WD)(A;;GA;;;RC)");
+
     PAGED_CODE();
 
     UNREFERENCED_PARAMETER(Driver);
@@ -378,6 +381,9 @@ Return Value:
     WdfDeviceInitSetDeviceType(DeviceInit, FILE_DEVICE_DISK);
     WdfDeviceInitSetIoType(DeviceInit, WdfDeviceIoDirect);
     WdfDeviceInitSetExclusive(DeviceInit, FALSE);
+
+    // Specify SDDL (Security Descriptor Definition Language) string to control access to the device
+    WdfDeviceInitAssignSDDLString(DeviceInit, &sddlString);
 
     //
     // Since this is a pure software only driver, there is no need to register

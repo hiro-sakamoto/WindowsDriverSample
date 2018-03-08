@@ -40,6 +40,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ramdisk.h" />
+    <ClInclude Include="forward_progress.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ramdisk.h" />
   </ItemGroup>
   <ItemGroup>
     <Inf Include="*.inx">
